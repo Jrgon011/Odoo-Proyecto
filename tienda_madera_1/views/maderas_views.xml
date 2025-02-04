@@ -1,0 +1,78 @@
+<odoo>
+
+    <!-- Acción para la ventana de Maderas -->
+    <record id="action_maderas" model="ir.actions.act_window">
+        <field name="name">Maderas</field>
+        <field name="res_model">tienda.madera</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Acción para la ventana de Categorías -->
+    <record id="action_categorias" model="ir.actions.act_window">
+        <field name="name">Categorías</field>
+        <field name="res_model">tienda.madera.categoria</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Vista de árbol (lista) para Maderas -->
+    <record id="view_chuche_tree" model="ir.ui.view">
+        <field name="name">tienda.madera.tree</field>
+        <field name="model">tienda.madera</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="madera_type"/>
+                <field name="dureza_type"/>
+                <field name="barniz_type"/>
+                <field name="fecha_tala"/>
+                <field name="brand"/>
+                <field name="densidad"/>
+                <!-- Campo de relación con empleado -->
+                <field name="empleado_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista de formulario para Maderas -->
+    <record id="view_chuche_form" model="ir.ui.view">
+        <field name="name">tienda.madera.form</field>
+        <field name="model">tienda.madera</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="madera_type"/>
+                        <field name="dureza_type"/>
+                        <field name="barniz_type"/>
+                        <field name="fecha_tala"/>
+                        <field name="brand"/>
+                    </group>
+                    <group>
+                        <field name="densidad"/>
+                        <!-- Campo de relación con empleado -->
+                        <field name="empleado_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Menú principal para la Tienda de Maderas -->
+    <menuitem id="menu_tienda_maderas" name="Tienda de Maderas" sequence="1"/>
+
+    <!-- Submenú para Maderas -->
+    <menuitem id="menu_tienda_maderas_productos" 
+              name="Maderas" 
+              parent="menu_tienda_maderas" 
+              sequence="1"
+              action="action_maderas"/>
+
+    <!-- Submenú para Categorías -->
+    <menuitem id="menu_tienda_maderas_categorias" 
+              name="Categorías" 
+              parent="menu_tienda_maderas" 
+              sequence="2"
+              action="action_categorias"/>
+
+</odoo>
